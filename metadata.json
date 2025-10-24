@@ -1,0 +1,5 @@
+{
+  "name": "AI Game Asset Forge",
+  "description": "An AI-powered platform to automate the creation of basic assets (images, text, layouts) for Card Games and Map Games, optimized for post-production workflows.",
+  "requestFramePermissions": []
+}
