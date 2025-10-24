@@ -26,21 +26,19 @@ export enum CardFont {
 
 export enum CardFrame {
   CLASSIC = 'Classic',
-  ORNATE = 'Ornate',
   MINIMALIST = 'Minimalist',
+  ORNATE = 'Ornate',
   INDUSTRIAL = 'Industrial',
   RUSTIC = 'Rustic',
-  EGYPTIAN = 'Egyptian',
   CARTOON = 'Cartoon',
   PARCHMENT = 'Parchment',
+  EGYPTIAN = 'Egyptian',
   GLASS = 'Glass',
 }
 
 export enum CardSize {
-  STANDARD = 'Standard (63x88mm)',
-  JAPANESE_MINI = 'Japanese Mini (59x86mm)',
-  LARGE = 'Large (70x110mm)',
-  SQUARE = 'Square (60x60mm)',
+  STANDARD = 'Standard (2.5x3.5)',
+  SQUARE = 'Square (1x1)',
   TAROT = 'Tarot (70x120mm)',
 }
 
@@ -52,14 +50,15 @@ export enum CardFormat {
 export enum ArtStyle {
   EPIC_FANTASY = 'Epic Fantasy',
   SCI_FI = 'Sci-Fi',
-  STEAMPUNK = 'Steampunk',
-  PIXEL_ART = 'Pixel Art',
-  OIL_PAINTING = 'Oil Painting',
-  WATERCOLOR = 'Watercolor',
-  THREE_D_RENDER = '3D Render',
-  MINIMALIST = 'Minimalist',
-  CARTOON = 'Cartoon',
   ANIME = 'Anime',
+  WATERCOLOR = 'Watercolor',
+  PIXEL_ART = 'Pixel Art',
+  CARTOON = 'Cartoon',
+  PHOTOREALISTIC = 'Photorealistic',
+  ABSTRACT = 'Abstract',
+  STEAMPUNK = 'Steampunk',
+  CYBERPUNK = 'Cyberpunk',
+  HORROR = 'Horror',
 }
 
 export interface CardData {
@@ -74,15 +73,35 @@ export interface CardData {
   cardFormat: CardFormat;
 }
 
-export enum MapShape {
-  SQUARE = 'Square',
-  HEXAGON = 'Hexagon',
+// Map related types
+export enum MapType {
+  WORLD = 'World',
+  CONTINENT = 'Continent',
+  KINGDOM = 'Kingdom',
+  CITY = 'City',
+  DUNGEON = 'Dungeon',
+  CAVERN = 'Cavern',
 }
 
-export enum MapTerrain {
-    FOREST = 'Forest',
-    DESERT = 'Desert',
-    SNOW = 'Snow',
-    VOLCANO = 'Volcano',
-    CITY = 'City'
+export enum MapStyle {
+  SATELLITE = 'Satellite',
+  FANTASY_ATLAS = 'Fantasy Atlas',
+  PARCHMENT = 'Parchment',
+  BLUEPRINT = 'Blueprint',
+  PIXEL_ART = 'Pixel Art',
+  SCI_FI_HOLO = 'Sci-Fi Hologram',
+  HAND_DRAWN = 'Hand-drawn',
+}
+
+export enum GridType {
+  NONE = 'None',
+  SQUARE = 'Square',
+  HEX = 'Hexagonal',
+}
+
+export interface MapData {
+  mapUrl: string;
+  mapType: MapType;
+  mapStyle: MapStyle;
+  gridType: GridType;
 }

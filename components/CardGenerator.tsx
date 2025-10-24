@@ -99,8 +99,13 @@ export const CardGenerator: React.FC = () => {
                 generatedText: apiResult.text,
             };
             setState({ config: liveConfig, result: newResult });
-        } catch (err: any) {
-            setError(err.message || 'An unknown error occurred.');
+        // FIX: Use unknown for caught error and add a type guard for accessing err.message.
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError('An unknown error occurred.');
+            }
         } finally {
             setIsLoading(false);
         }
@@ -144,7 +149,8 @@ export const CardGenerator: React.FC = () => {
                             <div key={key}>
                                 <label htmlFor={key} className="block text-xs font-medium text-gray-400 capitalize">{key.replace('card', '').replace('art', '')}</label>
                                 <select id={key} value={liveConfig[key as keyof typeof liveConfig]} onChange={e => handleConfigChange(key as keyof CardGenerationState['config'], e.target.value)} className="w-full mt-1 bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-cyan-500 focus:border-cyan-500">
-                                    {options.map(o => <option key={o} value={o}>{o}</option>)}
+                                    {/* FIX: Explicitly cast key and value to string to resolve typing error. */}
+                                    {options.map(o => <option key={String(o)} value={String(o)}>{String(o)}</option>)}
                                 </select>
                             </div>
                         ))}
